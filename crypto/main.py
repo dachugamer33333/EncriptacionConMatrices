@@ -23,7 +23,7 @@ def encriptar(matriz, mensaje):
             #mantenemos dentro del alfabeto 
               #resultado[i][j] = resultado[i][j] % len(alfabeto)
                  
-
+     
     return resultado
             
     """
@@ -67,7 +67,7 @@ for filas in arrayMensaje:
 for filas in matrizAleatoriav:
      print(filas)
      
-encriptar(matrizAleatoriav,arrayMensaje)
+print(encriptar(matrizAleatoriav,arrayMensaje))
 
 """
 [2, 8, 7, 2, 6, 6, 7], 
