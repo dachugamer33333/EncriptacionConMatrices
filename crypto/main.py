@@ -3,24 +3,29 @@ import random
 def encriptar(matriz, mensaje):
     filas_A = len(matriz)
     columnas_A = len(matriz[0])
-    filas_B = len(matriz)
-    columnas_B = len(matriz[0])
+    filas_B = len(mensaje)
+    columnas_B = len(mensaje[0])
 
     if columnas_A != filas_B:
          print("No se pueden multiplicar")
          return None
     
     resultado = [[0 for _ in range (columnas_B)] for _ in range (filas_A)]
+    print(resultado)
     
     for i in range(filas_A):
          for j in range(columnas_B):
               for k in range(columnas_A):
                    resultado[i][j] += matriz[i][k] * mensaje[k][j]
-            
+                   #print(f"i:{i} j:{j} k:{k}")
+                   
+                  
             #mantenemos dentro del alfabeto 
-              resultado[i][j] = resultado[i][j] % len(alfabeto)
+              #resultado[i][j] = resultado[i][j] % len(alfabeto)
+                 
 
     return resultado
+            
     """
     #es la formula de la multiplicacion de matrices
     resultado = [[sum([i][k] * B[k][j] for k in range(cols_A))
@@ -40,8 +45,8 @@ def matrizAleatoria(mensaje):
 
 def createArrayMensaje(mensaje):
     arrayMensaje=[]
-
-    for caracter  in mensaje:
+    lower=mensaje.lower()
+    for caracter  in lower:
         for i,valor in enumerate(alfabeto):
             print(f"\nindice:{i} Valor:{valor}")
             
