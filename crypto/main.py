@@ -55,28 +55,32 @@ def createArrayMensaje(mensaje):
 
     
     return arrayMensaje
+print("""
+     1)Encryptar
+     2)Desencryptar
+
+""")
+option=int(input("Que desea realizar:"))
+
+
+
+
 
 mensaje=input("Ingrese el mensaje que desea encriptar: ")
+mensajeEncryptado=""
 alfabeto=[" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"]
-#Array mensaje
 arrayMensaje=createArrayMensaje(mensaje)
 matrizAleatoriav=matrizAleatoria(mensaje)
+
+
+
 for filas in arrayMensaje:
-     print(filas)
+     for valor in filas:
+          mensajeEncryptado+=f"{str(valor)}-"
+print(mensajeEncryptado)
 
 for filas in matrizAleatoriav:
-     print(filas)
+     print()
      
 print(encriptar(matrizAleatoriav,arrayMensaje))
 
-"""
-[2, 8, 7, 2, 6, 6, 7], 
-[5, 7, 2, 6, 4, 2, 4], 
-[10, 6, 10, 6, 6, 4, 7], 
-[4, 5, 7, 6, 2, 1, 5], 
-[6, 8, 9, 6, 8, 9, 3], 
-[6, 7, 1, 8, 5, 1, 8], 
-[4, 1, 5, 7, 1, 5, 8]
-
-
-"""
