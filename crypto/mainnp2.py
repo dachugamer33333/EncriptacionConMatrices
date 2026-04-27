@@ -42,7 +42,7 @@ def encriptar():
     almacen={
         "encryptador":encriptador.tolist()
     }
-    almacen_c={
+    alamacen_c={
         "clavePublica": clavePublica.tolist()
     }
 
@@ -55,6 +55,7 @@ def encriptar():
         ruta2 = ruta + "_clavePublica.json"
         ruta = ruta + "_encryptador.json"
 
+    
     carpeta = os.path.dirname(ruta)
     if carpeta:
         os.makedirs(carpeta, exist_ok=True)
@@ -63,9 +64,7 @@ def encriptar():
         json.dump(almacen, archivo, indent=1)
 
     with open(ruta2, "w") as archivo:
-        json.dump(almacen_c, archivo, indent=1)
-   
-
+        json.dump(alamacen_c, archivo, indent=1)
     
     
     
@@ -73,58 +72,47 @@ def encriptar():
 
 def desencriptar(alfabeto):
     arrayMensaje=[]
-    mensaje=""
     alfabeto=[" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"]
-    try:
-        clavePublica=input("Brindame la clave Publica: ")
-        with open(clavePublica) as archivo:
-            clavePublica=json.load(archivo)
-        clavePublica=np.array(clavePublica["clavePublica"])
-        encryptador=input("Brindame el encriptador: ")
-        with open(encryptador) as archivo:
-            encryptador=json.load(archivo)
-        encryptador=np.array(encryptador["encryptador"])
-        inversaEncryptador=np.linalg.inv(encryptador)
-        MensajeFinal= inversaEncryptador @ clavePublica
-        MensajeFinal=np.round(MensajeFinal).astype(int)
-        MensajeFinal=MensajeFinal.tolist()
-        for caracter in MensajeFinal:
-                for caracter2 in caracter:
-                
+    clavePublica=input("Brindame la clave Publica: ")
+    with open(clavePublica) as archivo:
+     clavePublica=json.load(archivo)
+    clavePublica=np.array(clavePublica["clavePublica"])
+    encryptador=input("Brindame el encriptador: ")
+    with open(encryptador) as archivo:
+        encryptador=json.load(archivo)
+    encryptador=np.array(encryptador["encryptador"])
+    inversaEncryptador=np.linalg.inv(encryptador)
+    MensajeFinal= inversaEncryptador @ clavePublica
+    print(MensajeFinal)
+    MensajeFinal=MensajeFinal.tolist()
+    print(MensajeFinal)
+    for caracter in MensajeFinal:
+            print(caracter)
+            for caracter2 in caracter:
+                print(type(caracter2))
+                print(caracter2)
 
-                    for i,valor in enumerate(alfabeto):
-                        
-                        
-                        if i==caracter2:
-                                arrayMensaje.append([valor])
-        for filas in arrayMensaje:
-            for fila2 in filas:
-                mensaje+=fila2
-        print(f"||Resultado|| \n mensaje: {mensaje}")
-    except FileNotFoundError:
-     print("Error: no se encontró el archivo, verifica la ruta")
-    except json.JSONDecodeError:
-        print("Error: el archivo no tiene formato JSON válido")
-    except KeyError as e:
-        print(f"Error: no se encontró la clave {e} en el JSON")
-    except np.linalg.LinAlgError:
-        print("Error: la matriz no tiene inversa")
+                for i,valor in enumerate(alfabeto):
+                    
+                    
+                    if valor==int(round(caracter2)):
+                            arrayMensaje.append([valor])
+    print(arrayMensaje)
+
+   
    
 
     
-
 
 
 alfabeto=[" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 
 print("""
-      ||Programa encryptador||
-      
       1)Encryptar
       2)Desencryptar
       """)
-op=int(input("Que desea realizar:"))
+op=int(input("Que desea realizar"))
 match op:
     case 1:
         encriptar()
@@ -133,6 +121,3 @@ match op:
     case 3:
         print("Salir del programa")
         
-
-
-
