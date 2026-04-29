@@ -33,7 +33,10 @@ def encriptar():
         
     print("||Encriptar mensaje||")
     mensaje=input("Cual es el mensaje que desea encriptar?")
+    while(len(mensaje) == 0):
+         mensaje=input("Cual es el mensaje que desea encriptar?")
     arrayMensaje=createArrayMensaje(mensaje,alfabeto)
+    
     print(f"Arreglo del mensaje:\n{arrayMensaje}")
     encriptador=matrizAleatoria(mensaje)
     print(f"Arreglo Aleatorio nxn:\n{encriptador}")
@@ -122,21 +125,25 @@ def desencriptar(alfabeto):
 
 alfabeto=[" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"]
 
-
-print("""
-      ||Programa encryptador||
-      
-      1)Encryptar
-      2)Desencryptar
-      """)
-op=int(input("Que desea realizar:"))
-match op:
-    case 1:
-        encriptar()
-    case 2:
-        desencriptar(alfabeto)
-    case 3:
-        print("Salir del programa")
+while True:
+    print("""
+        ||Programa encryptador||
+        
+        1)Encryptar
+        2)Desencryptar
+        3)salir
+        """)
+    op=int(input("Que desea realizar:"))
+    match op:
+        case 1:
+            encriptar()
+        case 2:
+            desencriptar(alfabeto)
+        case 3:
+            print(">>>>>>>")
+            break
+            
+            
         
 
 
