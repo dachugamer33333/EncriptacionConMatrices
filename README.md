@@ -4,6 +4,17 @@ Programa de cifrado y descifrado de mensajes basado en el **cifrado Hill**, apli
 
 ---
 
+## Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| Python 3 | Lenguaje principal |
+| NumPy | Operaciones matriciales (multiplicación, inversa, determinante) |
+| JSON | Almacenamiento de la clave pública y la matriz encriptadora |
+| OS | Manejo de rutas y directorios para guardar archivos |
+
+---
+
 ## Cómo funciona
 
 ### Encriptar
@@ -58,3 +69,17 @@ El programa reconoce los siguientes 28 caracteres:
 ```
 
 Cualquier carácter fuera de este conjunto será ignorado silenciosamente.
+
+---
+
+## Contribuyentes
+
+### Contribuyente principal
+
+**Dachu_dev — Aldo Daniel Díaz Villanueva**
+Coordinó al equipo y lideró el desarrollo del proyecto.
+
+### Otros contribuyentes
+
+- [jorgedavidcarmonapadron-arch](https://github.com/jorgedavidcarmonapadron-arch)
+- [Arturo Rodrigues (skyless) — sorpresa-diaria](https://github.com/sorpresa-diaria)
