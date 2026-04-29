@@ -128,6 +128,7 @@ alfabeto=[" ","a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","
 while True:
     print("""
         ||Programa encryptador||
+          -Metodo de Hill
         
         1)Encryptar
         2)Desencryptar
