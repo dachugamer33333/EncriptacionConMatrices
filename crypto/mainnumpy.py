@@ -34,11 +34,11 @@ def encriptar():
     print("||Encriptar mensaje||")
     mensaje=input("Cual es el mensaje que desea encriptar?")
     arrayMensaje=createArrayMensaje(mensaje,alfabeto)
-    print(arrayMensaje)
+    print(f"Arreglo del mensaje:\n{arrayMensaje}")
     encriptador=matrizAleatoria(mensaje)
-    print(encriptador)
+    print(f"Arreglo Aleatorio nxn:\n{encriptador}")
     clavePublica=createclavePublica(arrayMensaje,encriptador)
-    print(clavePublica)
+    print(f"Matriz Encryptada(Mensaje):\n{clavePublica}")
     almacen={
         "encryptador":encriptador.tolist()
     }
@@ -80,21 +80,26 @@ def desencriptar(alfabeto):
         with open(clavePublica) as archivo:
             clavePublica=json.load(archivo)
         clavePublica=np.array(clavePublica["clavePublica"])
+        print(f"Clave pública cargada:\n{clavePublica}")
         encryptador=input("Brindame el encriptador: ")
         with open(encryptador) as archivo:
             encryptador=json.load(archivo)
         encryptador=np.array(encryptador["encryptador"])
+        print(f"Encryptador cargado:\n{encryptador}")
         inversaEncryptador=np.linalg.inv(encryptador)
+        print(f"Inversa del encryptador:\n{inversaEncryptador}")
         MensajeFinal= inversaEncryptador @ clavePublica
+        print(f"Mensaje final (sin redondear):\n{MensajeFinal}")
         MensajeFinal=np.round(MensajeFinal).astype(int)
         MensajeFinal=MensajeFinal.tolist()
+        print(f"Mensaje final (redondeado):\n{MensajeFinal}")
         for caracter in MensajeFinal:
                 for caracter2 in caracter:
                 
 
                     for i,valor in enumerate(alfabeto):
-                        
-                        
+                    
+                    
                         if i==caracter2:
                                 arrayMensaje.append([valor])
         for filas in arrayMensaje:
